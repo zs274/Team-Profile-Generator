@@ -30,15 +30,19 @@ function init() {
             name: 'managerNumber'
         },
         {
-            type: 'input',
+            type: 'list',
             message: managerQuestions[4],
-            name: 'managerAdd'
+            name: 'managerAdd',
+            choices: ['Add an engineer', 'Add an intern', 'I do not want to add anyone else']
         }
         ]);
-    // add function to go to engineer or intern questions or create HTML if don't add is chosen
-    // if else to return those functions
 
     // .then((data) => writeToFile(index.html))
+
+    // add function to go to engineer or intern questions or create HTML if don't add is chosen
+    // if else to return those functions
+        // if (data.managerAdd === "")
+
 }
 
 engineerPrompt = () => {
@@ -64,9 +68,10 @@ engineerPrompt = () => {
             name: 'engineerGithub'
         },
         {
-            type: 'input',
+            type: 'list',
             message: engineerQuestions[4],
-            name: 'engineerAdd'
+            name: 'engineerAdd',
+            choices: ['Add an engineer', 'Add an intern', 'I do not want to add anyone else']
         }
         ]);
     // add function to go to engineer or intern questions or append current to HTML if don't add is chosen
@@ -99,9 +104,10 @@ internPrompt = () => {
             name: 'internSchool'
         },
         {
-            type: 'input',
+            type: 'list',
             message: internQuestions[4],
-            name: 'engineerAdd'
+            name: 'internAdd',
+            choices: ['Add an engineer', 'Add an intern', 'I do not want to add anyone else']
         }
         ]);
     // add function to go to engineer or intern questions or append current to HTML if don't add is chosen
