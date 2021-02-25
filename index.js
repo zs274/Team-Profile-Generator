@@ -10,31 +10,31 @@ const internQuestions = ["What is the intern's name?", "What is the intern's ID?
 function init() {
     inquirer
         .prompt([{
-            type: input,
+            type: 'input',
             message: managerQuestions[0],
             name: 'managerName'
         },
         {
-            type: input,
+            type: 'input',
             message: managerQuestions[1],
             name: 'managerId'
         },
         {
-            type: input,
+            type: 'input',
             message: managerQuestions[2],
             name: 'managerEmail'
         },
         {
-            type: input,
+            type: 'input',
             message: managerQuestions[3],
             name: 'managerNumber'
         },
         {
-            type: input,
+            type: 'input',
             message: managerQuestions[4],
             name: 'managerAdd'
         }
-        ])
+        ]);
     // add function to go to engineer or intern questions or create HTML if don't add is chosen
     // if else to return those functions
 
@@ -44,31 +44,31 @@ function init() {
 engineerPrompt = () => {
     inquirer
         .prompt([{
-            type: input,
+            type: 'input',
             message: engineerQuestions[0],
             name: 'engineerName'
         },
         {
-            type: input,
+            type: 'input',
             message: engineerQuestions[1],
             name: 'engineerId'
         },
         {
-            type: input,
+            type: 'input',
             message: engineerQuestions[2],
             name: 'engineerEmail'
         },
         {
-            type: input,
+            type: 'input',
             message: engineerQuestions[3],
             name: 'engineerGithub'
         },
         {
-            type: input,
+            type: 'input',
             message: engineerQuestions[4],
             name: 'engineerAdd'
         }
-        ])
+        ]);
     // add function to go to engineer or intern questions or append current to HTML if don't add is chosen
     // if else to return those functions
 
@@ -79,31 +79,31 @@ engineerPrompt = () => {
 internPrompt = () => {
     inquirer
         .prompt([{
-            type: input,
+            type: 'input',
             message: internQuestions[0],
             name: 'internName'
         },
         {
-            type: input,
+            type: 'input',
             message: internQuestions[1],
             name: 'internId'
         },
         {
-            type: input,
+            type: 'input',
             message: internQuestions[2],
             name: 'internEmail'
         },
         {
-            type: input,
+            type: 'input',
             message: internQuestions[3],
             name: 'internSchool'
         },
         {
-            type: input,
+            type: 'input',
             message: internQuestions[4],
             name: 'engineerAdd'
         }
-        ])
+        ]);
     // add function to go to engineer or intern questions or append current to HTML if don't add is chosen
     // if else to return those functions
     // .then((data) => writeToFile(index.html))
@@ -111,6 +111,7 @@ internPrompt = () => {
 }
 
 // function to write html 
+// function writeToFile(data) {fs.writeFileSync}
 
 // call function
 init();
