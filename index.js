@@ -38,35 +38,17 @@ function init() {
         ])
         .then((data) => {
             writeToFile(data);
-         if (data.managerAdd === 'Add an engineer') {
-        return engineerPrompt();
-         }
-        else if (data.managerAdd === 'Add an intern') {
-            return internPrompt();
-        }
-        else {
-            fs.appendFileSync('dist/index.html')
-        }
-         })
-
-   
-    ;
-
-
-    // .then((data) => writeToFile(index.html))
-
-    // add function to go to engineer or intern questions or create HTML if don't add is chosen
-    // if else to return those functions
-
-    // if (data.managerAdd === 'Add an engineer') {
-    // return engineerPrompt();
-    // }
-    // else if (data.managerAdd === 'Add an intern') {
-    // return internPrompt
-    // }
-    // else write to file
-    // fs.appendFile
-
+            if (data.managerAdd === 'Add an engineer') {
+                return engineerPrompt();
+            }
+            else if (data.managerAdd === 'Add an intern') {
+                return internPrompt();
+            }
+            else {
+                fs.appendFileSync('dist/index.html')
+            }
+        });
+    // need to add code to finish making the html in else statement
 }
 
 engineerPrompt = () => {
@@ -97,21 +79,19 @@ engineerPrompt = () => {
             name: 'engineerAdd',
             choices: ['Add an engineer', 'Add an intern', 'I do not want to add anyone else']
         }
-        ]);
-
-    // .then((data) => writeToFile(index.html))
-    // add function to go to engineer or intern questions or append current to HTML if don't add is chosen
-    // if else to return those functions
-    // if (data.engineerAdd === 'Add an engineer') {
-    // return engineerPrompt();
-    // }
-    // else if (data.engineerAdd === 'Add an intern') {
-    // return internPrompt
-    // }
-    // else write to file
-
-
-
+        ])
+        .then((data) => {
+            writeToFile(data);
+            if (data.managerAdd === 'Add an engineer') {
+                return engineerPrompt();
+            }
+            else if (data.managerAdd === 'Add an intern') {
+                return internPrompt();
+            }
+            else {
+                fs.appendFileSync('dist/index.html')
+            }
+        });
 }
 
 internPrompt = () => {
@@ -142,18 +122,19 @@ internPrompt = () => {
             name: 'internAdd',
             choices: ['Add an engineer', 'Add an intern', 'I do not want to add anyone else']
         }
-        ]);
-
-    // .then((data) => writeToFile(index.html))
-    // add function to go to engineer or intern questions or append current to HTML if don't add is chosen
-    // if else to return those functions
-    // if (data.internAdd === 'Add an engineer') {
-    // return engineerPrompt();
-    // }
-    // else if (data.internAdd === 'Add an intern') {
-    // return internPrompt
-    // }
-    // else write to file
+        ])
+        .then((data) => {
+            writeToFile(data);
+            if (data.managerAdd === 'Add an engineer') {
+                return engineerPrompt();
+            }
+            else if (data.managerAdd === 'Add an intern') {
+                return internPrompt();
+            }
+            else {
+                fs.appendFileSync('dist/index.html')
+            }
+        });
 }
 
 // function to write html 
