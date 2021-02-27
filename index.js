@@ -45,7 +45,7 @@ function init() {
                 return internPrompt();
             }
             else {
-                fs.appendFileSync('dist/index.html')
+                fs.appendFileSync('Develop/dist/index.html')
             }
         });
     // need to add code to finish making the html in else statement
@@ -89,7 +89,7 @@ engineerPrompt = () => {
                 return internPrompt();
             }
             else {
-                fs.appendFileSync('dist/index.html')
+                fs.appendFileSync('Develop/dist/index.html')
             }
         });
 }
@@ -132,13 +132,27 @@ internPrompt = () => {
                 return internPrompt();
             }
             else {
-                fs.appendFileSync('dist/index.html')
+                fs.appendFileSync('Develop/dist/index.html')
             }
         });
 }
 
-// function to write html 
-// function writeToFile(data) {fs.writeFileSync}
+// function to write to html 
+function writeToFile(data) {
+    fs.writeFileSync(Develop / dist / index.html, html(data), err => {
+        if (err) {
+            console.log(err);
+        }
+        console.log('Team member added')
+    });
+}
+
+// function to add manager card to html
+
+// function to add engineer card to html
+
+//function to add intern card to html
+
 
 // call function
 init();
