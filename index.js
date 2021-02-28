@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const manager = require('Develop/lib/Manager.js');
+const engineer = require('Develop/lib/Engineer.js');
+const intern = require('Develop/lib/intern.js');
 
 // question array for each role
 
@@ -37,7 +40,7 @@ function init() {
         }
         ])
         .then((data) => {
-            writeToFile(data);
+            writeToFile('index.html', data);
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -81,7 +84,7 @@ engineerPrompt = () => {
         }
         ])
         .then((data) => {
-            writeToFile(data);
+            writeToFile('index.html', data);
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -124,7 +127,7 @@ internPrompt = () => {
         }
         ])
         .then((data) => {
-            writeToFile(data);
+            writeToFile('index.html', data);
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -137,9 +140,10 @@ internPrompt = () => {
         });
 }
 
+
 // function to write to html 
-function writeToFile(data) {
-    fs.writeFileSync(Develop / dist / index.html, html(data), err => {
+function writeToFile(fileName, data) {
+    fs.writeFileSync(fileName, html(data), err => {
         if (err) {
             console.log(err);
         }
@@ -153,6 +157,34 @@ function writeToFile(data) {
 
 //function to add intern card to html
 
+
+// function to generate HTML
+function generateHTML(data) {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile</title>
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    
+    </head>
+    
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">My Team</h1>
+        </div>
+    </div>
+
+
+    
+    
+    `
+}
 
 // call function
 init();
