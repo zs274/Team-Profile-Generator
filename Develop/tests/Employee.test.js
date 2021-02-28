@@ -28,9 +28,8 @@ describe("Employee", () => {
     describe("getRole", () => {
         it("sets the role of the employee", () => {
             const result = "Employee";
-            const emp = new Employee("Zarin", "123", "email@email.com", result);
+            const emp = new Employee("Zarin", "123", "email@email.com");
             expect(emp.getRole()).toBe(result);
         });
     });
-
 })
