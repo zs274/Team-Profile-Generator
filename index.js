@@ -8,7 +8,7 @@ var employees = 1
 // question array for each role
 
 const managerQuestions = ["What is the team manager's name?", "What is the team manager's ID?", "What is the team manager's email?", "What is the team manager's office number?", "What type of team member would you like to add?"];
-const engineerQuestions = ["What is the engineer's name?", "What is the engineer's ID?", "What is the engineer's email?", "What is the engineer's  GitHub username?", "What type of team member would you like to add?"];
+const engineerQuestions = ["What is the engineer's name?", "What is the engineer's ID?", "What is the engineer's email?", "What is the engineer's GitHub username?", "What type of team member would you like to add?"];
 const internQuestions = ["What is the intern's name?", "What is the intern's ID?", "What is the intern's email?", "What is the intern's school?", "What type of team member would you like to add?"];
 
 function init() {
@@ -164,6 +164,7 @@ function addEng(data) {
     <div class="card-body">
         <div class="card-header text-white bg-info mb-3">
             <h4 class="card-title">${engineer.name}</h4>
+            <h5 class="card-title text-white"><i class="fas fa-glasses"></i> Engineer</h5>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">${engineer.id}</li>
@@ -183,6 +184,7 @@ function addInt(data) {
     <div class="card-body">
         <div class="card-header text-white bg-info mb-3">
             <h4 class="card-title">${intern.name}</h4>
+            <h5 class="card-title text-white"><i class="fas fa-graduation-cap"></i> Intern</h5>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">${intern.id}</li>
@@ -207,6 +209,8 @@ function generateHTML(data) {
     
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
+            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="crossorigin="anonymous"/>
         <link rel="stylesheet" href="style.css">
     
     </head>
@@ -222,6 +226,7 @@ function generateHTML(data) {
             <div class="card-body">
                 <div class="card-header text-white bg-info mb-3">
                     <h4 class="card-title">${manager.name}</h4>
+                    <h5 class="card-title text-white"><i class="fas fa-mug-hot"></i> Manager</h5>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">${manager.id}</li>
