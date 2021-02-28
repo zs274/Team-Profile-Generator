@@ -3,7 +3,8 @@ const fs = require('fs');
 const Manager = require('./Develop/lib/Manager');
 const Engineer = require('./Develop/lib/Engineer');
 const Intern = require('./Develop/lib/Intern');
-const members = [];
+// const members = [];
+var employees = 1
 
 // question array for each role
 
@@ -41,8 +42,10 @@ function init() {
         }
         ])
         .then((data) => {
-            let manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerNumber);
-            members.push(manager);
+            // let manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerNumber);
+            // members.push(manager);
+            writeToFile(data);
+
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -50,7 +53,7 @@ function init() {
                 return internPrompt();
             }
             else {
-                writeToFile(manager);
+                fs.appendFileSync('index.html', end());
             }
         });
     // need to add code to finish making the html in else statement
@@ -86,8 +89,11 @@ engineerPrompt = () => {
         }
         ])
         .then((data) => {
-            let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
-            members.push(engineer);
+            // let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+            // members.push(engineer);
+
+            fs.appendFileSync('index.html', addEng(data));
+
             if (data.engineerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -95,7 +101,7 @@ engineerPrompt = () => {
                 return internPrompt();
             }
             else {
-                writeToFile(data);
+                fs.appendFileSync('index.html', end());
             }
         });
 }
@@ -130,9 +136,12 @@ internPrompt = () => {
         }
         ])
         .then((data) => {
-            let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
-            members.push(intern);
-            console.log(members);
+            // let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+            // members.push(intern);
+            // console.log(members);
+
+            fs.appendFileSync('index.html', addEng(data));
+
             if (data.internAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -140,28 +149,14 @@ internPrompt = () => {
                 return internPrompt();
             }
             else {
-                writeToFile(intern) 
-                { return `<div class="row">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <div class="card-header text-white bg-info mb-3">
-                                <h4 class="card-title">${intern.name}</h4>
-                              </div>
-                              <ul class="list-group list-group-flush">
-                                <li class="list-group-item">${intern.id}</li>
-                                <li class="list-group-item">${intern.email}</li>
-                                <li class="list-group-item">${intern.school}</li>
-                              </ul>
-                        </div>
-                      </div>
-                </div>`
+                fs.appendFileSync('index.html', end());
                 };
-            }
         });
 }
 
 // function to write to html 
 function writeToFile(data) {
+
     fs.writeFileSync('index.html', generateHTML(data), err => {
         if (err) {
             console.log(err);
@@ -173,9 +168,41 @@ function writeToFile(data) {
 // function to add manager card to html
 
 // function to add engineer card to html
-
+function addEng(data) {
+    let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+    employees++;
+    return `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <div class="card-header text-white bg-info mb-3">
+            <h4 class="card-title">${engineer.name}</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${engineer.id}</li>
+            <li class="list-group-item">${engineer.email}</li>
+            <li class="list-group-item">${engineer.github}</li>
+        </ul>
+    </div>
+</div>`
+}
 //function to add intern card to html
 
+function addInt(data) {
+    let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+    employees++;
+    return `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <div class="card-header text-white bg-info mb-3">
+            <h4 class="card-title">${intern.name}</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${intern.id}</li>
+            <li class="list-group-item">${intern.email}</li>
+            <li class="list-group-item">${intern.school}</li>
+        </ul>
+    </div>
+</div>`
+
+}
 
 // function to generate HTML with manager input
 function generateHTML(data) {
@@ -218,6 +245,11 @@ function generateHTML(data) {
      `
 }
 
+function end() {
+    return `</div>
+    </body>
+    </html>`
+}
 
 // call function
 init();
