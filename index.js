@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const manager = require('Develop/lib/Manager.js');
-const engineer = require('Develop/lib/Engineer.js');
-const intern = require('Develop/lib/intern.js');
+const Manager = require('Develop/lib/Manager.js');
+const Engineer = require('Develop/lib/Engineer.js');
+const Intern = require('Develop/lib/intern.js');
 
 // question array for each role
 
@@ -160,6 +160,7 @@ function writeToFile(fileName, data) {
 
 // function to generate HTML
 function generateHTML(data) {
+    let man = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber);
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -179,9 +180,23 @@ function generateHTML(data) {
             <h1 class="display-4">My Team</h1>
         </div>
     </div>
+    <div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <div class="card-header text-white bg-info mb-3">
+                    <h4 class="card-title">${man.name}</h4>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${man.id}</li>
+                    <li class="list-group-item"${man.email}</li>
+                    <li class="list-group-item"${man.officeNumber}</li>
+                  </ul>
+            </div>
+          </div>
 
-
-    
+    </div>
+</div> -->
     
     `
 }
