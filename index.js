@@ -140,7 +140,7 @@ internPrompt = () => {
             // members.push(intern);
             // console.log(members);
 
-            fs.appendFileSync('index.html', addEng(data));
+            fs.appendFileSync('index.html', addInt(data));
 
             if (data.internAdd === 'Add an engineer') {
                 return engineerPrompt();
@@ -206,7 +206,7 @@ function addInt(data) {
 
 // function to generate HTML with manager input
 function generateHTML(data) {
-
+    let manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerNumber);
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -231,12 +231,12 @@ function generateHTML(data) {
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <div class="card-header text-white bg-info mb-3">
-                    <h4 class="card-title">${data.name}</h4>
+                    <h4 class="card-title">${manager.name}</h4>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${data.id}</li>
-                    <li class="list-group-item">${data.email}</li>
-                    <li class="list-group-item">${data.officeNumber}</li>
+                    <li class="list-group-item">${manager.id}</li>
+                    <li class="list-group-item">${manager.email}</li>
+                    <li class="list-group-item">${manager.officeNumber}</li>
                   </ul>
             </div>
           </div>
