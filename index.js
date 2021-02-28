@@ -50,7 +50,7 @@ function init() {
                 return internPrompt();
             }
             else {
-                writeToFile('index.html', data);
+                writeToFile(manager);
             }
         });
     // need to add code to finish making the html in else statement
@@ -88,14 +88,14 @@ engineerPrompt = () => {
         .then((data) => {
             let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
             members.push(engineer);
-            if (data.managerAdd === 'Add an engineer') {
+            if (data.engineerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
-            else if (data.managerAdd === 'Add an intern') {
+            else if (data.engineerAdd === 'Add an intern') {
                 return internPrompt();
             }
             else {
-                writeToFile('index.html', data);
+                writeToFile(data);
             }
         });
 }
@@ -133,14 +133,29 @@ internPrompt = () => {
             let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
             members.push(intern);
             console.log(members);
-            if (data.managerAdd === 'Add an engineer') {
+            if (data.internAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
-            else if (data.managerAdd === 'Add an intern') {
+            else if (data.internAdd === 'Add an intern') {
                 return internPrompt();
             }
             else {
-                writeToFile('index.html', data);
+                writeToFile(intern) 
+                { return `<div class="row">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="card-header text-white bg-info mb-3">
+                                <h4 class="card-title">${data.name}</h4>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">${data.id}</li>
+                                <li class="list-group-item">${data.email}</li>
+                                <li class="list-group-item">${data.internSchool}</li>
+                              </ul>
+                        </div>
+                      </div>
+                </div>`
+                };
             }
         });
 }
@@ -162,9 +177,8 @@ function writeToFile(data) {
 //function to add intern card to html
 
 
-// function to generate HTML
+// function to generate HTML with manager input
 function generateHTML(data) {
-    // let man = new Manager(data.name, data.id, data.email, data.officeNumber);
 
     return `<!DOCTYPE html>
     <html lang="en">
@@ -199,7 +213,6 @@ function generateHTML(data) {
                   </ul>
             </div>
           </div>
-
     </div>
 </div>
      `
