@@ -171,7 +171,8 @@ function writeToFile(data) {
 function addEng(data) {
     let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
     employees++;
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="row">
+    <div class="card" style="width: 18rem;">
     <div class="card-body">
         <div class="card-header text-white bg-info mb-3">
             <h4 class="card-title">${engineer.name}</h4>
@@ -189,7 +190,8 @@ function addEng(data) {
 function addInt(data) {
     let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
     employees++;
-    return `<div class="card" style="width: 18rem;">
+    return `<div class="row">
+    <div class="card" style="width: 18rem;">
     <div class="card-body">
         <div class="card-header text-white bg-info mb-3">
             <h4 class="card-title">${intern.name}</h4>
@@ -228,7 +230,7 @@ function generateHTML(data) {
     </div>
     <div class="container">
     <div class="row">
-        <div class="card" style="width: 18rem;">
+        <div class="card manager" style="width: 18rem;">
             <div class="card-body">
                 <div class="card-header text-white bg-info mb-3">
                     <h4 class="card-title">${manager.name}</h4>
