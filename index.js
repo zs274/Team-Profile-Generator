@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Manager = require('Develop/lib/Manager.js');
-const Engineer = require('Develop/lib/Engineer.js');
-const Intern = require('Develop/lib/intern.js');
+const Manager = require('./Develop/lib/Manager');
+const Engineer = require('./Develop/lib/Engineer');
+const Intern = require('./Develop/lib/Intern');
+const members = [];
 
 // question array for each role
 
@@ -40,7 +41,8 @@ function init() {
         }
         ])
         .then((data) => {
-            writeToFile('index.html', data);
+            let manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerNumber);
+            members.push(manager);
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -48,7 +50,7 @@ function init() {
                 return internPrompt();
             }
             else {
-                fs.appendFileSync('Develop/dist/index.html')
+                writeToFile('index.html', data);
             }
         });
     // need to add code to finish making the html in else statement
@@ -84,7 +86,8 @@ engineerPrompt = () => {
         }
         ])
         .then((data) => {
-            writeToFile('index.html', data);
+            let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+            members.push(engineer);
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -92,7 +95,7 @@ engineerPrompt = () => {
                 return internPrompt();
             }
             else {
-                fs.appendFileSync('Develop/dist/index.html')
+                writeToFile('index.html', data);
             }
         });
 }
@@ -127,7 +130,9 @@ internPrompt = () => {
         }
         ])
         .then((data) => {
-            writeToFile('index.html', data);
+            let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+            members.push(intern);
+            console.log(members);
             if (data.managerAdd === 'Add an engineer') {
                 return engineerPrompt();
             }
@@ -135,15 +140,14 @@ internPrompt = () => {
                 return internPrompt();
             }
             else {
-                fs.appendFileSync('Develop/dist/index.html')
+                writeToFile('index.html', data);
             }
         });
 }
 
-
 // function to write to html 
-function writeToFile(fileName, data) {
-    fs.writeFileSync(fileName, html(data), err => {
+function writeToFile(data) {
+    fs.writeFileSync('index.html', generateHTML(data), err => {
         if (err) {
             console.log(err);
         }
@@ -160,7 +164,8 @@ function writeToFile(fileName, data) {
 
 // function to generate HTML
 function generateHTML(data) {
-    let man = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber);
+    // let man = new Manager(data.name, data.id, data.email, data.officeNumber);
+
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -185,21 +190,21 @@ function generateHTML(data) {
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <div class="card-header text-white bg-info mb-3">
-                    <h4 class="card-title">${man.name}</h4>
+                    <h4 class="card-title">${data.name}</h4>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${man.id}</li>
-                    <li class="list-group-item"${man.email}</li>
-                    <li class="list-group-item"${man.officeNumber}</li>
+                    <li class="list-group-item">${data.id}</li>
+                    <li class="list-group-item">${data.email}</li>
+                    <li class="list-group-item">${data.officeNumber}</li>
                   </ul>
             </div>
           </div>
 
     </div>
-</div> -->
-    
-    `
+</div>
+     `
 }
+
 
 // call function
 init();
