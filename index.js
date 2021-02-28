@@ -145,12 +145,12 @@ internPrompt = () => {
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <div class="card-header text-white bg-info mb-3">
-                                <h4 class="card-title">${data.name}</h4>
+                                <h4 class="card-title">${intern.name}</h4>
                               </div>
                               <ul class="list-group list-group-flush">
-                                <li class="list-group-item">${data.id}</li>
-                                <li class="list-group-item">${data.email}</li>
-                                <li class="list-group-item">${data.internSchool}</li>
+                                <li class="list-group-item">${intern.id}</li>
+                                <li class="list-group-item">${intern.email}</li>
+                                <li class="list-group-item">${intern.school}</li>
                               </ul>
                         </div>
                       </div>
